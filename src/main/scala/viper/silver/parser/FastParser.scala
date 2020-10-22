@@ -953,11 +953,11 @@ object FastParser extends PosParser[Char, String] {
   }
 
   lazy val stmt: P[PStmt] = P(ParserExtension.newStmtAtStart | macroassign | fieldassign | localassign | fold | unfold | exhale | assertP |
-    inhale | assume | ifthnels | whle | varDecl | defineDecl | newstmt | 
+    refute | inhale | assume | ifthnels | whle | varDecl | defineDecl | newstmt | 
     methodCall | goto | lbl | packageWand | applyWand | macroref | block | ParserExtension.newStmtAtEnd)
 
   lazy val nodefinestmt: P[PStmt] = P(ParserExtension.newStmtAtStart | fieldassign | localassign | fold | unfold | exhale | assertP |
-    inhale | assume | ifthnels | whle | varDecl | newstmt |
+    refute | inhale | assume | ifthnels | whle | varDecl | newstmt |
     methodCall | goto | lbl | packageWand | applyWand | macroref | block | ParserExtension.newStmtAtEnd)
 
   lazy val macroref: P[PMacroRef] = P(idnuse).map(a => PMacroRef(a))
@@ -975,6 +975,8 @@ object FastParser extends PosParser[Char, String] {
   lazy val exhale: P[PExhale] = P(keyword("exhale") ~/ exp).map(PExhale)
 
   lazy val assertP: P[PAssert] = P(keyword("assert") ~/ exp).map(PAssert)
+
+  lazy val refute: P[PRefute] = P(keyword("refute") ~/ exp).map(PRefute)
 
   lazy val inhale: P[PInhale] = P(keyword("inhale") ~/ exp).map(PInhale)
 

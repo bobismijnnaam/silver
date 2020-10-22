@@ -176,6 +176,8 @@ case class TypeChecker(names: NameAnalyser) {
         check(e, Bool)
       case PAssert(e) =>
         check(e, Bool)
+      case PRefute(e) =>
+        check(e, Bool)
       case PInhale(e) =>
         check(e, Bool)
       case PAssume(e) =>

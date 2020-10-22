@@ -301,6 +301,17 @@ object errors {
   def AssertFailed(offendingNode: Assert): PartialVerificationError =
     PartialVerificationError((reason: ErrorReason) => AssertFailed(offendingNode, reason))
 
+  case class RefuteFailed(offendingNode: Refute, reason: ErrorReason, override val cached: Boolean = false) extends AbstractVerificationError {
+    val id = "refute.failed"
+    val text = "Refute always passes."
+
+    def withNode(offendingNode: errors.ErrorNode = this.offendingNode) = RefuteFailed(offendingNode.asInstanceOf[Refute], this.reason)
+    def withReason(r: ErrorReason) = RefuteFailed(offendingNode, r)
+  }
+
+  def RefuteFailed(offendingNode: Refute): PartialVerificationError =
+    PartialVerificationError((reason: ErrorReason) => RefuteFailed(offendingNode, reason))
+
   case class TerminationFailed(offendingNode: Function, reason: ErrorReason, override val cached: Boolean = false) extends AbstractVerificationError {
     val id = "termination.failed"
     val text = s"Function ${offendingNode.name} might not terminate."

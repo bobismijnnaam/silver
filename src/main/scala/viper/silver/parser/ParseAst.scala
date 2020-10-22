@@ -954,6 +954,7 @@ case class PPackageWand(wand: PExp, proofScript: PSeqn) extends PStmt
 case class PApplyWand(e: PExp) extends PStmt
 case class PExhale(e: PExp) extends PStmt
 case class PAssert(e: PExp) extends PStmt
+case class PRefute(e: PExp) extends PStmt
 case class PAssume(e: PExp) extends PStmt
 case class PInhale(e: PExp) extends PStmt
 case class PVarAssign(idnuse: PIdnUse, rhs: PExp) extends PStmt
@@ -1179,6 +1180,7 @@ object Nodes {
       case PApplyWand(exp) => Seq(exp)
       case PExhale(exp) => Seq(exp)
       case PAssert(exp) => Seq(exp)
+      case PRefute(exp) => Seq(exp)
       case PInhale(exp) => Seq(exp)
       case PAssume(exp) => Seq(exp)
       case PRegularNewStmt(target, fields) => Seq(target) ++ fields

@@ -212,6 +212,7 @@ object CfgGenerator {
            _: MethodCall |
            _: NewStmt |
            _: Assert |
+           _: Refute |
            _: LocalVarDeclStmt |
            _: Assume =>
         // handle regular, non-control statements

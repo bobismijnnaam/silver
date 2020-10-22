@@ -653,6 +653,7 @@ object FastPrettyPrinter extends FastPrettyPrinterBase with BracketPrettyPrinter
       case Assume(e) => text("assume") <+> show(e)
       case Exhale(e) => text("exhale") <+> show(e)
       case Assert(e) => text("assert") <+> show(e)
+      case Refute(e) => text("refute") <+> show(e)
       case MethodCall(mname, args, targets) =>
         val call = text(mname) <> parens(ssep(args map show, char(',') <> space))
         targets match {
