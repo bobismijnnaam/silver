@@ -7,7 +7,6 @@
 // Settings common to Silver and backends
 // Compilation settings
 
-ThisBuild / scalaVersion := "2.13.4"
 ThisBuild / scalacOptions ++= Seq(
   "-encoding", "UTF-8",               // Enforce UTF-8, instead of relying on properly set locales
   "-deprecation",                     // Warn when using deprecated language features
@@ -37,6 +36,7 @@ lazy val silver = (project in file("."))
     name := "silver",
     organization := "viper",
     version := "0.1-SNAPSHOT",
+    scalaVersion := "2.13.4",
 
     // Fork test to a different JVM than SBT's, avoiding SBT's classpath interfering with
     // classpath used by Scala's reflection.
